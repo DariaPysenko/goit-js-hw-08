@@ -24,9 +24,18 @@ function onFormSubmit(e) {
     // без дефолтной перезагрузки
     e.preventDefault();
     // очистить перезагрузить форму
-  e.currentTarget.reset();
+
   localStorage.removeItem(STORAGE_KEY);
+  const emailValue = refs.input.value;
+  const messageValue = refs.textarea.value;
+
+  if (emailValue === '' || messageValue === '') {
+    return alert('Заполните обязательные поля Email и Message:');
+  }
   console.log(feedbackFormData);
+  e.currentTarget.reset();
+
+  
 }
 //ф-ция при релоуде и вернуть сохраненные данные
 function populateOnFormInput() {
