@@ -23,21 +23,28 @@ function onFormInput(e) {
 
 function onFormSubmit(e) {
 
+  // e.preventDefault();
+  // const emailValue = refs.input.value;
+  // const messageValue = refs.textarea.value;
+  // if (emailValue === '' || messageValue === '') {
+  //   return alert('Заполните обязательные поля Email и Message:');
+  // }
+  // console.log(feedbackFormData);
+  // e.currentTarget.reset();
+  // localStorage.clear();
+
   e.preventDefault();
-  const emailValue = refs.input.value;
-  const messageValue = refs.textarea.value;
-  if (emailValue === '' || messageValue === '') {
-    return alert('Заполните обязательные поля Email и Message:');
-  }
   console.log(feedbackFormData);
   e.currentTarget.reset();
-  localStorage.clear();
+  localStorage.removeItem(STORAGE_KEY);
+ 
   
   
 }
 
 function populateOnFormInput() {
   const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
   if (savedMessage) {
     refs.input.value = savedMessage.email || '';
     refs.textarea.value = savedMessage.message || '';
